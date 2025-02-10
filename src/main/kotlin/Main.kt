@@ -11,10 +11,15 @@ fun main() {
     val amount = 100000
     val result = if ((amount*commission)/100 < minimalCommission) minimalCommission else (amount*commission)/100
     println(result)
-    
+
 //  Задача №2. Люди/Человеки
-    val likes = 2132
-    if (likes.toString()[likes.toString().length-1] == '1' && likes != 11){
+    val likes = 223711
+    var lastSecondSymbol = '0'
+    val lastSymbol = likes.toString()[likes.toString().length-1]
+    if (likes.toString().length >= 2){
+        lastSecondSymbol = likes.toString()[likes.toString().length-2]
+    }
+    if (lastSymbol.toString() + lastSecondSymbol.toString() != "11" && lastSymbol == '1'){
         println("Понравилось $likes человеку")
     }else{
         println("Понравилось $likes людям")
