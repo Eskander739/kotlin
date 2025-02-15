@@ -17,15 +17,20 @@ fun main() {
 
 
 
-fun maxLimit(cardType: String, sumToday: Int, sumMonth: Int){
+fun maxLimit(cardType: String = "Мир", sumToday: Int, sumMonth: Int = 0){
     if (sumToday > 150_000){
         println("Блокировка операции, превышен дневной лимит")
     }else if (sumToday + sumMonth > 600_000){
         println("Блокировка операции, превышен месячный лимит")
     }else{
         if (cardType == "Mastercard"){
-            if (sumToday > 75_000){
-                val endSum = sumToday - 75000
+            if (sumMonth > 75000){
+                println("Коммисия: " + ((sumToday*0.6)/100)+20)
+            }else if (sumToday + sumMonth < 75_000){
+                println("Коммисия отсутствует")
+            }else if (sumMonth < 75000 && sumToday + sumMonth > 75000){
+                val endHelp = 75_000 - sumMonth
+                val endSum = sumToday - endHelp
                 println("Коммисия: " + ((endSum*0.6)/100)+20)
             }
 
